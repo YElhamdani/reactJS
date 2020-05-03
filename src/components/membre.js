@@ -1,9 +1,18 @@
-import React from 'react'   
+import React, {Fragment} from 'react'   
 
 
-const Membre = () => {
-    return(
-        <h2>Membre de ma famille</h2>
+
+
+
+const Membre = ({nom, children, age}) => { 
+    return (
+
+    <Fragment>
+        <h2>Membre de ma famille : {nom}</h2>
+        <h3>Age : {age}</h3>
+        { children ? <p>{children}</p> : <Fragment />}
+    </Fragment>
+    
     )
 }
 
