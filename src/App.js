@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
+import Button from './components/button';
 import Membre from './components/membre';
 
 const famille = {
   membre1: {
-      nom: 'Younes',
+      nom: 'Youunes',
       age: 20
   },
   membre2: {
@@ -17,19 +18,22 @@ const famille = {
   }
 }
 
-
 class App extends Component{
+  
   state ={
     famille
   }
   
-  handleClick = () => {
-    console.log('click')
+  handleClick = (number) => {
+    const famille = { ...this.state.famille}
+    famille.membre1.age += number
+    this.setState({famille})
   }
   render(){ 
     const {titre} = this.props
     const {famille} = this.state
       return (
+
 <div className="App">
     <h1>{titre}</h1>
     <Membre 
@@ -44,10 +48,9 @@ class App extends Component{
       
   <strong>je suis un chocolat</strong> 
    <br/>
-  <button
-    onClick={this.handleClick}
-  >
-    Vieillir </button>
+        <Button 
+          vieillir={() => this.handleClick(2)}
+        />
 </div>
 );
 
